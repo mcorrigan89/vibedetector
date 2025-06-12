@@ -1,11 +1,26 @@
-FROM oven/bun
+FROM oven/bun:latest AS base
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
+# Copy package files
+COPY package.json bun.lock* ./
+COPY bunfig.toml ./
+
+# Install dependencies
+RUN bun install --frozen-lockfile
+
+# Copy source code
 COPY . .
 
-RUN bun install
+# Build the application
+RUN bun run build
 
-EXPOSE 3000/tcp
+# Expose port
+EXPOSE 3000
 
-CMD [ "bun", "start" ]
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:3000/healthy || exit 1
+
+# Start the application
+CMD ["bun", "start"]
