@@ -5,7 +5,7 @@ type VibeLevel = 1 | 2 | 3 | 4 | 5;
 const getVibeText = (level: VibeLevel) => {
   switch (level) {
     case 1:
-      return "terrible vibes";
+      return "these vibes are wack";
     case 2:
       return "the vibes are off";
     case 3:
