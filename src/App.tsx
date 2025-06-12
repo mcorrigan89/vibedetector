@@ -22,17 +22,17 @@ const getVibeText = (level: VibeLevel) => {
 const getVibeColor = (level: VibeLevel) => {
   switch (level) {
     case 1:
-      return "text-red-700";
+      return "text-red-700 dark:text-red-400";
     case 2:
-      return "text-orange-600";
+      return "text-orange-600 dark:text-orange-400";
     case 3:
-      return "text-yellow-600";
+      return "text-yellow-600 dark:text-yellow-400";
     case 4:
-      return "text-green-600";
+      return "text-green-600 dark:text-green-400";
     case 5:
-      return "text-emerald-700";
+      return "text-emerald-700 dark:text-emerald-400";
     default:
-      return "text-gray-500";
+      return "text-gray-500 dark:text-gray-400";
   }
 };
 
@@ -42,9 +42,11 @@ interface AppProps {
 
 export function App({ vibe }: AppProps) {
   return (
-    <div className="max-w-7xl mx-auto p-8 text-center relative z-10">
-      <div className={`text-7xl font-bold ${getVibeColor(vibe)}`}>
-        {getVibeText(vibe)}
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+      <div className="max-w-7xl mx-auto p-8 text-center relative z-10">
+        <div className={`text-7xl font-bold ${getVibeColor(vibe)}`}>
+          {getVibeText(vibe)}
+        </div>
       </div>
     </div>
   );
