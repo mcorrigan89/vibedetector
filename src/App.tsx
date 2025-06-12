@@ -42,7 +42,7 @@ interface AppProps {
 
 export function App({ vibe }: AppProps) {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors justify-center items-center flex">
       <div className="max-w-7xl mx-auto p-8 text-center relative z-10">
         <div className={`text-7xl font-bold ${getVibeColor(vibe)}`}>
           {getVibeText(vibe)}
